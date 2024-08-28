@@ -30,6 +30,8 @@
             <version>${logback.version}</version>
         </dependency>
 
+        
+
         <!-- Serenity Dependencies -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>

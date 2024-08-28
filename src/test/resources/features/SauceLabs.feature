@@ -1,16 +1,16 @@
 
 @LoginTest
- Feature: Sauce Labs App
+ Feature: My demo app
+   @CarritoCompras
+   Scenario Outline: Carrito de compras ok
+     Given estoy en la aplicación de SauceLabs
+     And valido que carguen correctamente los productos en la galeria
+     When agrego unidades <UNIDADES> del siguiente producto "<PRODUCTO>"
+     Then valido el carrito de compra actualice correctamente
 
-   @Login1
-   Scenario: Login Ok
-     Given ingreso al aplicativo de SauceLabs
-     When inicio sesión con mi usuario "standard_user" y clave "secret_sauce"
+     Examples:
+       | UNIDADES |PRODUCTO                  |
+       | 1        |Sauce Labs Backpack       |
+       | 1        |Sauce Labs Bolt - T-Shirt |
+       | 2        |Sauce Labs Bike Light     |
 
-     @Login2
-   Scenario: Login 2 Ok
-     Given ingreso al aplicativo de SauceLabs
-     When ingreso el usuario "standard_user"
-     And ingreso la clave "secret_sauce"
-     And hago clic en LOGIN
-     Then valido el login OK

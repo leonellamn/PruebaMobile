@@ -1,46 +1,38 @@
 package com.nttdata.stepsdefinitions;
 
+import com.nttdata.screens.SauceLoginScreen;
 import com.nttdata.steps.SuaceLabsLoginSteps;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
+
+import static java.sql.DriverManager.getDriver;
 
 public class SauceLabsStepDef {
     @Steps
     SuaceLabsLoginSteps login;
 
-    @When("ingreso el usuario {string}")
-    public void ingresoElUsuario(String usuario) {
-        login.ingresoElUsuario(usuario);
+    @Given("estoy en la aplicación de SauceLabs")
+    public void estoyEnLaAplicaciónDeSauceLabs() {
+            login.validoSauceLabs();
     }
 
-    @Given("ingreso al aplicativo de SauceLabs")
-    public void ingresoAlAplicativoDeSauceLabs() {
+        @And("valido que carguen correctamente los productos en la galeria")
+    public void validoQueCarguenCorrectamenteLosProductosEnLaGaleria() {
+        login.validoCargaCorrectaProductos();
     }
 
-    @When("inicio sesión con mi usuario {string} y clave {string}")
-    public void inicioSesiónConMiUsuarioYClave(String arg0, String arg1) {
-        login.ingresoElUsuario(arg0);
-        login.ingresarClave(arg1);
-        login.ingresar();
-
+    @When("agrego unidades {int} del siguiente producto {string}")
+    public void agregoUnidadesDelSiguienteProducto(int unidades, String producto) {
+        login.validoAgregarUnidsyProducto(unidades,producto);
     }
 
-
-
-    @And("ingreso la clave {string}")
-    public void ingresoLaClave(String arg0) {
-        login.ingresarClave(arg0);
-    }
-
-    @And("hago clic en LOGIN")
-    public void hagoClicEn() {
-        login.ingresar();
-    }
-
-    @And("valido el login OK")
-    public void validoElLoginOK() {
-        login.validacionLogin();
+    @Then("valido el carrito de compra actualice correctamente")
+    public void validoElCarritoDeCompraActualiceCorrectamente() {
+        login.validoCarritoActualizado();
     }
 }
